@@ -17,7 +17,7 @@ The `FormValidator` class is a JavaScript utility designed to enhance the valida
 
 ## Usage
 
-### Installation
+### Installation (Using a CDN)
 
 Include the following script tags in your HTML file to load the necessary dependencies:
 
@@ -25,7 +25,18 @@ Include the following script tags in your HTML file to load the necessary depend
 <!-- intl-tel-input script -->
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
 <!-- FormValidator script -->
-<script src="path/to/FormValidator.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/BblLLlKA/formValidator/dist/formValidator.min.js"></script>
+```
+
+### Installation (Not using a CDN)
+
+Include the following script tags in your HTML file to load the necessary dependencies:
+
+```html
+<!-- intl-tel-input script -->
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+<!-- FormValidator script -->
+<script src="path/to/formValidator.min.js"></script>
 ```
 
 ### Instantiation
@@ -55,9 +66,27 @@ The class supports real-time validation for the following input fields:
 You can customize error messages for each field by modifying the `messages`
 object within the class. The default messages are in English.
 
+```js
+window.messages = {
+    ru: {
+        firstNameError: 'Имя должно содержать минимум 2 символа',
+        lastNameError: 'Фамилия должна содержать минимум 2 символа',
+        emailError: 'Введите корректный адрес электронной почты',
+        phoneNumberError: 'Введите корректный номер телефона',
+    },
+    en: {
+        firstNameError: 'First name should be at least 2 characters long',
+        lastNameError: 'Last name should be at least 2 characters long',
+        emailError: 'Enter a valid email address',
+        phoneNumberError: 'Enter a valid phone number',
+    },
+    // Add other language versions as needed
+};
+```
+
 ## Example
 
-You can view [a live demo]('http://localhost:3000') and see some examples of how to use the various options.
+You can view [a live demo]('https://github.com/BblLLlKA/formValidator/tree/main/examples') and see some examples of how to use the various options.
 
 ```html
 <form id="myForm1">
@@ -77,7 +106,7 @@ You can view [a live demo]('http://localhost:3000') and see some examples of how
 </form>
 <!-- Include the necessary scripts and instantiate FormValidator -->
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
-<script src="path/to/FormValidator.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/BblLLlKA/formValidator/dist/formValidator.min.js"></script>
 <script>
     const formValidator1 = new FormValidator('myForm1');
 </script>
