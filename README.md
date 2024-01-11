@@ -7,7 +7,7 @@ The `FormValidator` class is a JavaScript utility designed to enhance the valida
 ## Table of Contents
 
 -   [Usage](#usage)
--   [Installation](#installation)
+-   [Installation](#installation-using-a-cdn)
 -   [Instantiation](#instantiation)
 -   [Features](#features)
 -   [Real-time Validation](#real-time-validation)
