@@ -89,20 +89,24 @@ window.messages = {
 You can view [a live demo](https://github.com/BblLLlKA/formValidator/tree/main/examples) and see some examples of how to use the various options.
 
 ```html
-<form id="myForm1">
-    <label for="firstName">First Name:</label>
+<form action="api.php" method="POST" id="myForm">
+    <label for="firstName">Name:</label>
     <input type="text" id="firstName" name="firstName" />
-    <span id="firstNameError" class="error"></span>
-    <label for="lastName">Last Name:</label>
+    <div class="error" id="firstNameError"></div>
+
+    <label for="lastName">Surname:</label>
     <input type="text" id="lastName" name="lastName" />
-    <span id="lastNameError" class="error"></span>
+    <div class="error" id="lastNameError"></div>
+
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" />
-    <span id="emailError" class="error"></span>
+    <div class="error" id="emailError"></div>
+
     <label for="phoneNumber">Phone Number:</label>
     <input type="tel" id="phoneNumber" name="phoneNumber" />
-    <span id="phoneNumberError" class="error"></span>
-    <input type="submit" value="Submit" />
+    <div class="error" id="phoneNumberError"></div>
+
+    <button type="submit">Send</button>
 </form>
 <!-- Include the necessary scripts and instantiate FormValidator -->
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
