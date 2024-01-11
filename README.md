@@ -10,25 +10,25 @@ The `FormValidator` class is a JavaScript utility designed to enhance the valida
 
 Include the following script tags in your HTML file to load the necessary dependencies:
 
-``
+`
 
 <!-- intl-tel-input script -->
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
 <!-- FormValidator script -->
 <script src="path/to/FormValidator.js"></script>
 
-``
+`
 
 ### Instantiation
 
 Create an instance of `FormValidator` by providing the form ID as a parameter:
-``
+`
 
 <script>
 const formValidator1 = new FormValidator('myForm1'); 
 </script>
 
-``
+`
 Optionally, you can provide a second parameter for
 the language (default is 'en').
 
@@ -50,7 +50,7 @@ object within the class. The default messages are in English.
 
 ## Example
 
-``
+`
 
 <form id="myForm1">
     <label for="firstName">First Name:</label>
@@ -73,7 +73,7 @@ object within the class. The default messages are in English.
 <script>
     const formValidator1 = new FormValidator('myForm1');
 </script>
-``
+`
 
 ### Notes
 
