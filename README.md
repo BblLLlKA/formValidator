@@ -86,7 +86,7 @@ window.messages = {
 
 ## Example
 
-You can view [a live demo]('https://github.com/BblLLlKA/formValidator/tree/main/examples') and see some examples of how to use the various options.
+You can view [a live demo](https://github.com/BblLLlKA/formValidator/tree/main/examples) and see some examples of how to use the various options.
 
 ```html
 <form id="myForm1">
