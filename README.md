@@ -1,8 +1,19 @@
-# FormValidator README
+# FormValidator
 
 ## Overview
 
-The `FormValidator` class is a JavaScript utility designed to enhance the validation and user experience of HTML forms. It provides real-time validation for certain input fields and allows customization of error messages. This class uses the intl-tel-input library to validate international phone numbers.
+The `FormValidator` class is a JavaScript utility designed to enhance the validation and user experience of HTML forms. It provides real-time validation for certain input fields and allows customization of error messages. This class uses the [intl-tel-input](https://intl-tel-input.com/) library to validate international phone numbers.
+
+## Table of Contents
+
+-   [Usage](#usage)
+-   [Installation](#installation)
+-   [Instantiation](#instantiation)
+-   [Features](#features)
+-   [Real-time Validation](#real-time-validation)
+-   [Customizable Error Messages](#customizable-error-messages)
+-   [Demo and Example](#example)
+-   [Notes](#notes)
 
 ## Usage
 
@@ -45,6 +56,8 @@ You can customize error messages for each field by modifying the `messages`
 object within the class. The default messages are in English.
 
 ## Example
+
+You can view [a live demo]('http://localhost:3000') and see some examples of how to use the various options.
 
 ```html
 <form id="myForm1">
