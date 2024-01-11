@@ -10,19 +10,27 @@ The `FormValidator` class is a JavaScript utility designed to enhance the valida
 
 Include the following script tags in your HTML file to load the necessary dependencies:
 
-htmlCopy code
+``
 
-`<!-- intl-tel-input script --> <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script><!-- FormValidator script --> <script src="path/to/FormValidator.js"></script> `
+<!-- intl-tel-input script -->
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+<!-- FormValidator script -->
+<script src="path/to/FormValidator.js"></script>
+
+``
 
 ### Instantiation
 
 Create an instance of `FormValidator` by providing the form ID as a parameter:
+``
 
-javascriptCopy code
+<script>
+const formValidator1 = new FormValidator('myForm1'); 
+</script>
 
-`const formValidator1 = new FormValidator('myForm1');`
-
-Optionally, you can provide a second parameter for the language (default is 'en').
+``
+Optionally, you can provide a second parameter for
+the language (default is 'en').
 
 ## Features
 
@@ -37,15 +45,37 @@ The class supports real-time validation for the following input fields:
 
 ### Customizable Error Messages
 
-You can customize error messages for each field by modifying the `messages` object within the class. The default messages are in English.
+You can customize error messages for each field by modifying the `messages`
+object within the class. The default messages are in English.
 
 ## Example
 
-htmlCopy code
+``
 
-`<form id="myForm1">     <label for="firstName">First Name:</label>     <input type="text" id="firstName" name="firstName">     <span id="firstNameError" class="error"></span>      <label for="lastName">Last Name:</label>     <input type="text" id="lastName" name="lastName">     <span id="lastNameError" class="error"></span>      <label for="email">Email:</label>     <input type="email" id="email" name="email">     <span id="emailError" class="error"></span>      <label for="phoneNumber">Phone Number:</label>     <input type="tel" id="phoneNumber" name="phoneNumber">     <span id="phoneNumberError" class="error"></span>      <input type="submit" value="Submit"> </form>  <!-- Include the necessary scripts and instantiate FormValidator -->  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script> <script src="path/to/FormValidator.js"></script> <script>     const formValidator1 = new FormValidator('myForm1'); </script>`
+<form id="myForm1">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" />
+    <span id="firstNameError" class="error"></span>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" />
+    <span id="lastNameError" class="error"></span>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" />
+    <span id="emailError" class="error"></span>
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="tel" id="phoneNumber" name="phoneNumber" />
+    <span id="phoneNumberError" class="error"></span>
+    <input type="submit" value="Submit" />
+</form>
+<!-- Include the necessary scripts and instantiate FormValidator -->
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+<script src="path/to/FormValidator.js"></script>
+<script>
+    const formValidator1 = new FormValidator('myForm1');
+</script>
+``
 
-## Notes
+### Notes
 
 -   Ensure that the `FormValidator` script is included after the form in the HTML document.
 -   If the form ID provided during instantiation is not found, an error will be logged.
