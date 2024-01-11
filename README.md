@@ -112,7 +112,7 @@ You can view [a live demo](https://github.com/BblLLlKA/formValidator/tree/main/e
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/BblLLlKA/formValidator/dist/formValidator.min.js"></script>
 <script>
-    const formValidator1 = new FormValidator('myForm1');
+    const formValidator1 = new FormValidator('myForm');
 </script>
 ```
 
