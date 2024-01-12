@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `FormValidator` class is a JavaScript utility designed to enhance the validation and user experience of HTML forms. It provides real-time validation for certain input fields and allows customization of error messages. This class uses the [intl-tel-input](https://intl-tel-input.com/) library to validate international phone numbers.
+The `FormValidator` library is a JavaScript utility designed to enhance the validation and user experience of HTML forms. It introduces real-time validation for specific input fields and allows for easy customization of error messages. Notably, the library integrates with the [intl-tel-input](https://intl-tel-input.com/) library, offering robust validation for international phone numbers.
 
 ## Table of Contents
 
@@ -25,7 +25,7 @@ Include the following script tags in your HTML file to load the necessary depend
 <!-- intl-tel-input script -->
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
 <!-- FormValidator script -->
-<script src="https://cdn.jsdelivr.net/gh/BblLLlKA/formValidator/dist/formValidator.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/BblLLlKA/formValidator/dist/latest/formValidator.min.js"></script>
 ```
 
 ### Installation (Not using a CDN)
@@ -48,7 +48,7 @@ const formValidator1 = new FormValidator('myForm1');
 ```
 
 Optionally, you can provide a second parameter for
-the language (default is 'en').
+the language (default is 'en') or messages.
 
 ## Features
 
@@ -67,21 +67,24 @@ You can customize error messages for each field by modifying the `messages`
 object within the class. The default messages are in English.
 
 ```js
-window.messages = {
-    ru: {
-        firstNameError: 'Имя должно содержать минимум 2 символа',
-        lastNameError: 'Фамилия должна содержать минимум 2 символа',
-        emailError: 'Введите корректный адрес электронной почты',
-        phoneNumberError: 'Введите корректный номер телефона',
+const formValidator = new FormValidator('myForm', {
+    language: 'ru',
+    messages: {
+        ru: {
+            firstNameError: 'Имя должно содержать минимум 2 символа',
+            lastNameError: 'Фамилия должна содержать минимум 2 символа',
+            emailError: 'Введите корректный адрес электронной почты',
+            phoneNumberError: 'Введите корректный номер телефона',
+        },
+        en: {
+            firstNameError: 'First name should be at least 2 characters long',
+            lastNameError: 'Last name should be at least 2 characters long',
+            emailError: 'Enter a valid email address',
+            phoneNumberError: 'Enter a valid phone number',
+        },
+        // Add other language versions as needed
     },
-    en: {
-        firstNameError: 'First name should be at least 2 characters long',
-        lastNameError: 'Last name should be at least 2 characters long',
-        emailError: 'Enter a valid email address',
-        phoneNumberError: 'Enter a valid phone number',
-    },
-    // Add other language versions as needed
-};
+});
 ```
 
 ## Example
@@ -110,7 +113,7 @@ You can view [a live demo](https://github.com/BblLLlKA/formValidator/tree/main/e
 </form>
 <!-- Include the necessary scripts and instantiate FormValidator -->
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/BblLLlKA/formValidator/dist/formValidator.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/BblLLlKA/formValidator/dist/latest/formValidator.min.js"></script>
 <script>
     const formValidator1 = new FormValidator('myForm');
 </script>
