@@ -26,10 +26,22 @@
             <button type="submit">Send</button>
         </form>
         <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
-        <script src="translate.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/BblLLlKA/formValidator/dist/formValidator.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/BblLLlKA/formValidator/dist/latest/formValidator.min.js"></script>
         <script>
-            const formValidator1 = new FormValidator('myForm', 'en');
+            const formValidator = new FormValidator('myForm', {
+                language: 'ru',
+                messages: {
+                    ru: {
+                        firstNameError:
+                            'Имя должно содержать минимум 2 символа',
+                        lastNameError:
+                            'Фамилия должна содержать минимум 2 символа',
+                        emailError:
+                            'Введите корректный адрес электронной почты',
+                        phoneNumberError: 'Введите корректный номер телефона',
+                    },
+                },
+            });
         </script>
     </body>
 </html>
