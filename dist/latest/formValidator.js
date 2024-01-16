@@ -12,7 +12,7 @@
      * @class
      */
     class FormValidator {
-        static version = '1.0.0';
+        static version = '1.0.1';
         /**
          * Constructor function for FormValidator.
          * @constructor
@@ -33,7 +33,11 @@
                 : 'en';
 
             this.setupPhoneNumberInput();
-
+            this.events = {
+                validationSuccess: [],
+                validationError: [],
+                handleInput: [],
+            };
             this.form.addEventListener('submit', this.validateForm.bind(this));
             this.form.addEventListener('input', this.handleInput.bind(this));
 
@@ -44,6 +48,30 @@
                     `Language "${this.language}" not found in messages. Using default language.`
                 );
                 this.language = 'en';
+            }
+        }
+
+        /**
+         * Subscribe to an event.
+         * @param {string} eventName - The name of the event to subscribe to.
+         * @param {Function} callback - The callback function to be called on the event.
+         */
+        on(eventName, callback) {
+            if (typeof callback === 'function' && this.events[eventName]) {
+                this.events[eventName].push(callback);
+            }
+        }
+
+        /**
+         * Notify all subscribers about an event.
+         * @param {string} eventName - The name of the event.
+         * @param {Object} eventData - Additional data related to the event.
+         */
+        notifySubscribers(eventName, eventData) {
+            if (this.events[eventName]) {
+                this.events[eventName].forEach((callback) => {
+                    callback(eventData);
+                });
             }
         }
 
@@ -187,6 +215,8 @@
                 'phoneNumber',
             ];
 
+            const validationResult = {};
+
             const isValidForm = fieldsToValidate.every((fieldName) => {
                 const validationFunction =
                     fieldName === 'email'
@@ -199,16 +229,21 @@
 
                 const field = this.form.querySelector(`[name="${fieldName}"]`);
                 if (field) {
-                    return this.validateField(fieldName, validationFunction);
+                    validationResult[fieldName] = this.validateField(
+                        fieldName,
+                        validationFunction
+                    );
                 } else {
                     console.warn(`Field "${fieldName}" not found.`);
-                    return true;
+                    validationResult[fieldName] = true;
                 }
+                return validationResult[fieldName];
             });
-
             if (!isValidForm) {
+                this.notifySubscribers('validationError', validationResult);
                 throw new Error('Form validation failed.');
             } else {
+                this.notifySubscribers('validationSuccess', validationResult);
                 console.log('Form submitted successfully.');
                 event.target.submit();
             }
@@ -222,6 +257,7 @@
             const target = event.target;
 
             if (target.tagName === 'INPUT') {
+                this.notifySubscribers('handleInput', event.target);
                 const fieldName = target.name;
                 const validationFunction =
                     fieldName === 'email'
