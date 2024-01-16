@@ -12,6 +12,7 @@ The `FormValidator` library is a JavaScript utility designed to enhance the vali
 -   [Features](#features)
 -   [Real-time Validation](#real-time-validation)
 -   [Customizable Error Messages](#customizable-error-messages)
+-   [Subscribe to events](#subscribe-to-events)
 -   [Demo and Example](#example)
 -   [Notes](#notes)
 
@@ -84,6 +85,27 @@ const formValidator = new FormValidator('myForm', {
         },
         // Add other language versions as needed
     },
+});
+```
+
+### Subscribe to events
+
+You can subscribe to some class events:
+
+```js
+const formValidator1 = new FormValidator('myForm1');
+
+// Successful validation event
+formValidator1.on('validationSuccess', (eventData) => {
+    console.log('Form validation successful!', eventData);
+});
+// Event of unsuccessful validation
+formValidator1.on('validationError', (eventData) => {
+    console.error('Form validation failed!', eventData);
+});
+// User input event
+formValidator1.on('handleInput', (eventData) => {
+    console.log('Input!', eventData);
 });
 ```
 
