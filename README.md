@@ -72,14 +72,14 @@ const formValidator = new FormValidator('myFormId', {
     language: 'ru',
     messages: {
         ru: {
-            fullNameError: 'Полное имя должно содержать минимум 2 слова'
+            fullNameError: 'Полное имя должно содержать минимум 2 слова',
             firstNameError: 'Имя должно содержать минимум 2 символа',
             lastNameError: 'Фамилия должна содержать минимум 2 символа',
             emailError: 'Введите корректный адрес электронной почты',
             phoneNumberError: 'Введите корректный номер телефона',
         },
         en: {
-            fullNameError: 'The full name must contain a minimum of 2 words'
+            fullNameError: 'The full name must contain a minimum of 2 words',
             firstNameError: 'First name should be at least 2 characters long',
             lastNameError: 'Last name should be at least 2 characters long',
             emailError: 'Enter a valid email address',
