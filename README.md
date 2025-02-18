@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `FormValidator` library is a JavaScript utility designed to enhance the validation and user experience of HTML forms. It introduces real-time validation for specific input fields and allows for easy customization of error messages. Notably, the library integrates with the [intl-tel-input](https://intl-tel-input.com/) library, offering robust validation for international phone numbers.
+The `FormValidator` class is a JavaScript utility designed to enhance the validation and user experience of HTML forms. It introduces real-time validation for specific input fields and allows for easy customization of error messages. Notably, the class integrates with the [intl-tel-input](https://intl-tel-input.com/) library, offering robust validation for international phone numbers.
 
 ## Table of Contents
 
@@ -14,14 +14,14 @@ The `FormValidator` library is a JavaScript utility designed to enhance the vali
 -   [Customizable Error Messages](#customizable-error-messages)
 -   [Config intl-tel-input](#config-international-telephone-input-library)
 -   [Subscribe to events](#subscribe-to-events)
--   [Demo and Example](#example)
+-   [Example](#example)
 -   [Notes](#notes)
 
 ## Usage
 
 ### Installation (Using a CDN)
 
-Include the following script tags in your HTML file to load the necessary dependencies, the library itself will plug in all the necessary dependencies:
+Include the following script tags in your HTML file to load the necessary dependencies, the class itself will plug in all the necessary dependencies:
 
 ```html
 <!-- FormValidator script -->
@@ -30,7 +30,7 @@ Include the following script tags in your HTML file to load the necessary depend
 
 ### Installation (Not using a CDN)
 
-Include the following script tags in your HTML file to load the necessary dependencies:
+Include the following script tags in your HTML file to load the required dependencies and connect the class:
 
 ```html
 <!-- FormValidator script -->
@@ -45,8 +45,28 @@ Create an instance of `FormValidator` by providing the form ID as a parameter:
 const formValidator = new FormValidator('myFormId');
 ```
 
-Optionally, you can provide a second parameter for
-the language (default is 'en') or messages.
+The class initialization method shown above will validate the form with the default method.
+
+Optionally, you can specify a parameter for
+language (default 'en') and messages. By default class has only English language, so to connect any other language you need to pass a message object:
+
+```js
+const formValidator = new FormValidator('myFormId', {
+    language: 'uk', // Changes the language of errors to Ukrainian
+    messages: {
+        uk: {
+            fullNameError: "Повне ім'я має містити мінімум 2 слова",
+            firstNameError: "Ім'я має містити мінімум 2 символи",
+            lastNameError: 'Прізвище має містити мінімум 2 символи',
+            emailError: 'Введіть коректну адресу електронної пошти',
+            phoneNumberError: 'Введіть коректний номер телефону',
+        },
+        // Add other language versions as needed
+    },
+});
+```
+
+If the specified language is not found in the list of messages, English will be applied.
 
 ## Features
 
@@ -69,15 +89,15 @@ object within the class. The default messages are in English.
 
 ```js
 const formValidator = new FormValidator('myFormId', {
-    language: 'ru',
+    language: 'uk',
     messages: {
-        ru: {
-            fullNameError: 'Полное имя должно содержать минимум 2 слова',
-            firstNameError: 'Имя должно содержать минимум 2 символа',
-            lastNameError: 'Фамилия должна содержать минимум 2 символа',
-            emailError: 'Введите корректный адрес электронной почты',
-            phoneNumberError: 'Введите корректный номер телефона',
-        },
+        uk: {
+            fullNameError: "Повне ім'я має містити мінімум 2 слова",
+            firstNameError: "Ім'я має містити мінімум 2 символи",
+            lastNameError: 'Прізвище має містити мінімум 2 символи',
+            emailError: 'Введіть коректну адресу електронної пошти',
+            phoneNumberError: 'Введіть коректний номер телефону',
+        },,
         en: {
             fullNameError: 'The full name must contain a minimum of 2 words',
             firstNameError: 'First name should be at least 2 characters long',
@@ -92,7 +112,7 @@ const formValidator = new FormValidator('myFormId', {
 
 ### Config international telephone input library
 
-You can configure the iti variable for each form:
+You can configure the [iti](https://intl-tel-input.com/) variable for each form:
 
 ```js
 const formValidator = new FormValidator('myFormId', {
@@ -106,6 +126,8 @@ const formValidator = new FormValidator('myFormId', {
 });
 ```
 
+Default configuration writes data collected from IP to the ipData cookie to avoid repeated API requests.
+
 ### Subscribe to events
 
 You can subscribe to some class events:
@@ -116,38 +138,54 @@ const formValidator = new FormValidator('myFormId');
 // Successful validation event
 formValidator.on('validationSuccess', (form) => {
     // The eventData contains the form element
-    setTimeout(() => {
-        form.submit();
-    }, 300);
+    console.log(form);
 });
 
 // Event of unsuccessful validation
-formValidator.on('validationError', (eventData) => {
-    // eventData contains the names of fields that have not been validated
-    console.error('Form validation failed!', eventData);
+formValidator.on('validationError', (eventResult) => {
+    // eventResult contains the names of fields that have not been validated
+    console.error('Form validation failed!', eventResult);
 });
 ```
 
 ## Example
 
-You can view [a live demo](https://github.com/BblLLlKA/formValidator/tree/main/examples) and see some examples of how to use the various options.
+Sample form for successful initialization of a class.
 
 ```html
-<form action="api.php" method="POST" id="myForm">
+<form
+    action="api.php"
+    method="POST"
+    id="myForm">
     <label for="fullName">Full name:</label>
-    <input type="text" id="fullName" name="fullName" />
+    <input
+        type="text"
+        id="fullName"
+        name="fullName" />
 
     <label for="firstName">First name:</label>
-    <input type="text" id="firstName" name="firstName" />
+    <input
+        type="text"
+        id="firstName"
+        name="firstName" />
 
     <label for="lastName">Surname:</label>
-    <input type="text" id="lastName" name="lastName" />
+    <input
+        type="text"
+        id="lastName"
+        name="lastName" />
 
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" />
+    <input
+        type="email"
+        id="email"
+        name="email" />
 
     <label for="phoneNumber">Phone Number:</label>
-    <input type="tel" id="phoneNumber" name="phoneNumber" />
+    <input
+        type="tel"
+        id="phoneNumber"
+        name="phoneNumber" />
 
     <button type="submit">Send</button>
 </form>
